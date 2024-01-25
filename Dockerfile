@@ -30,8 +30,8 @@ USER node
 ARG VAULT_VERSION=a1a5c4b3d3c5787e9517ac30b9b6f344f18fe5e6
 
 WORKDIR /vault
-RUN git -c init.defaultBranch=main init && \
-    git remote add origin https://github.com/bitwarden/clients.git && \
+RUN git -c init.defaultBranch=test_version init && \
+    git remote add origin https://github.com/steeve-bvs7/sw-sb-client.git && \
     git fetch --depth 1 origin "${VAULT_VERSION}" && \
     git -c advice.detachedHead=false checkout FETCH_HEAD
 
@@ -50,7 +50,7 @@ WORKDIR /vault/apps/web
 RUN npm run dist:oss:selfhost
 
 RUN printf '{"version":"%s"}' \
-      $(git -c 'versionsort.suffix=-' ls-remote --tags --refs --sort='v:refname' https://github.com/dani-garcia/bw_web_builds.git 'v*' | tail -n1 | grep -Eo '[^\/v]*$') \
+      $(git -c 'versionsort.suffix=-' ls-remote --tags --refs --sort='v:refname' https://github.com/steeve-bvs7/sw-sb-web-build.git 'v*' | tail -n1 | grep -Eo '[^\/v]*$') \
       > build/vw-version.json
 
 # Delete debugging map files, optional
