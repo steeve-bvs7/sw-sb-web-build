@@ -27,7 +27,7 @@ USER node
 # https://github.com/bitwarden/clients/commit/${VAULT_VERSION}
 #
 # Using https://github.com/bitwarden/clients/releases/tag/web-v2024.1.2
-ARG VAULT_VERSION=a1a5c4b3d3c5787e9517ac30b9b6f344f18fe5e6
+ARG VAULT_VERSION=50d8a5bea9d705a52d78f4cc3442e3822e61e053
 
 WORKDIR /vault
 RUN git -c init.defaultBranch=test_version init && \
